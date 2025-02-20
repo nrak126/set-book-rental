@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Quagga from "quagga";
 
-export const Barcode: React.FC = () => {
+interface BarcodeProps {
+  setIsbn: (isbn: string) => void;
+}
+
+export const Barcode: React.FC<BarcodeProps> = ({ setIsbn }) => {
   // カメラ映像を表示するためのRef
   const scannerRef = useRef<HTMLDivElement>(null);
-
-  // スキャンされたバーコードの値を管理するState
-  const [isbnCode, setIsbnCode] = useState<string | null>(null);
 
   useEffect(() => {
     // QuaggaJSの初期化
@@ -39,7 +40,7 @@ export const Barcode: React.FC = () => {
       const barcode = result.codeResult.code; // スキャンされたバーコード
       if (barcode.startsWith("978") || barcode.startsWith("979")) {
         // ISBNは通常13桁
-        setIsbnCode(barcode);
+        setIsbn(barcode);
         Quagga.stop(); // スキャンを止める
       } else {
         Quagga.start();
@@ -50,15 +51,6 @@ export const Barcode: React.FC = () => {
   return (
     <div>
       <div ref={scannerRef} style={{ width: "100%", height: "200px" }} />
-      <p
-        style={{
-          position: "absolute",
-          top: "65%",
-          fontSize: "18px",
-        }}
-      >
-        スキャン結果: {isbnCode || "スキャン中..."}
-      </p>
     </div>
   );
 };
