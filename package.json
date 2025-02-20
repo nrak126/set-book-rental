@@ -11,6 +11,7 @@
   "dependencies": {
     "firebase-admin": "^13.1.0",
     "next": "15.1.7",
+    "quagga": "^0.12.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
