@@ -3,9 +3,9 @@
 import React, { useEffect, useRef } from "react";
 import Quagga from "quagga";
 
-interface BarcodeProps {
+type BarcodeProps = {
   setIsbn: (isbn: string) => void;
-}
+};
 
 export const Barcode: React.FC<BarcodeProps> = ({ setIsbn }) => {
   // カメラ映像を表示するためのRef
@@ -51,6 +51,15 @@ export const Barcode: React.FC<BarcodeProps> = ({ setIsbn }) => {
   return (
     <div>
       <div ref={scannerRef} style={{ width: "100%", height: "200px" }} />
+      <p
+        style={{
+          position: "absolute",
+          top: "58%",
+          fontSize: "18px",
+        }}
+      >
+        スキャン中...
+      </p>
     </div>
   );
 };

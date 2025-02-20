@@ -6,4 +6,5 @@ export type Book = {
   description: string;
   coverImage: string;
   quantity: number;
+  publisher: string;
 }
