@@ -8,7 +8,7 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       projectId: serviceAccount.project_id,
       clientEmail: serviceAccount.client_email,
-      privateKey: serviceAccount.private_key?.replace(/\\n/g, '\n'), // 改行を正しく処理
+      privateKey: serviceAccount.private_key?.replace(/\\n/g, '\n'),
     }),
   });
 }
