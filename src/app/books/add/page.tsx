@@ -97,10 +97,11 @@ const Page: React.FC<Book> = () => {
               <BookEditor bookInfo={bookInfo} />
               {bookInfo.coverImage && bookInfo.coverImage !== "" && (
                 <Image
-                  src={bookInfo.coverImage}
-                  alt="Book Cover"
-                  className="max-w-[200px]"
-                />
+                src={bookInfo.coverImage}
+                alt="Book Cover"
+                width={100}
+                height={100}
+              />
               )}
             </>
           ) : (
