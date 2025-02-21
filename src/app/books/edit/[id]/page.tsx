@@ -1,6 +1,6 @@
-import { Book } from "@/src/types/book";
+// import { Book } from "@/src/types/book";
 
-const Page: React.FC<Book> = () => {
+const Page = () => {
   return <></>;
 };
 export default Page;
