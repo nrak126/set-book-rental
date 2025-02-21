@@ -36,7 +36,7 @@ export const Barcode: React.FC<BarcodeProps> = ({ setIsbn }) => {
     );
 
     // バーコードが検出されたとき
-    Quagga.onDetected((result: any) => {
+    Quagga.onDetected((result: Quagga.QuaggaResult) => {
       const barcode = result.codeResult.code; // スキャンされたバーコード
       if (barcode.startsWith("978") || barcode.startsWith("979")) {
         // ISBNは通常13桁
@@ -46,7 +46,7 @@ export const Barcode: React.FC<BarcodeProps> = ({ setIsbn }) => {
         Quagga.start();
       }
     });
-  }, []);
+  }, [setIsbn]);
 
   return (
     <div>

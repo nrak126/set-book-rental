@@ -3,7 +3,14 @@ import { Book } from "@/src/types/book"; // Book 型をインポート
 import React, { useEffect, useState } from "react";
 import { Barcode } from "@/src/components/books/ScanBarcode"; // Barcode コンポーネント
 import axios from "axios";
-import { BookEditor } from "@/src/components/books/BookEditor";
+import { BookEditor } from "@/src/components/books/BookEditor"; // パスは実際の場所に合わせて変更
+
+import Image from "next/image";
+
+interface IndustryIdentifier {
+  type: string;
+  identifier: string;
+}
 
 const Page: React.FC<Book> = () => {
   const [isbn, setIsbn] = useState<string>(""); // ISBN
@@ -17,11 +24,16 @@ const Page: React.FC<Book> = () => {
         );
 
         // ISBN-13 の一致確認
-        const isMatched = response.data.items.some((item: any) =>
-          item.volumeInfo?.industryIdentifiers?.some(
-            (identifier: any) =>
-              identifier.type === "ISBN_13" && identifier.identifier === isbn
-          )
+        const isMatched = response.data.items.some(
+          (item: {
+            volumeInfo: {
+              industryIdentifiers: { type: string; identifier: string }[];
+            };
+          }) =>
+            item.volumeInfo?.industryIdentifiers?.some(
+              (identifier: IndustryIdentifier) =>
+                identifier.type === "ISBN_13" && identifier.identifier === isbn
+            )
         );
 
         if (
@@ -84,15 +96,15 @@ const Page: React.FC<Book> = () => {
               <p>出版社: {bookInfo.publisher}</p>
               <BookEditor bookInfo={bookInfo} />
               {bookInfo.coverImage && bookInfo.coverImage !== "" && (
-                <img
+                <Image
                   src={bookInfo.coverImage}
                   alt="Book Cover"
-                  style={{ maxWidth: "200px" }}
+                  className="max-w-[200px]"
                 />
               )}
             </>
           ) : (
-            <p>本の情報が見つかりませんでした。</p>
+            <p>本の情報が見つかりませんでした。ISBNを確認してください。</p>
           )}
         </>
       )}
