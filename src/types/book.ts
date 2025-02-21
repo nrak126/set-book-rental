@@ -2,7 +2,7 @@ export type Book = {
   isbn: string;
   title: string;
   author: string;
-  publisherDate: Date;
+  publishedDate: Date;
   description: string;
   coverImage: string;
   quantity: number;
