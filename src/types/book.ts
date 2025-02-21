@@ -2,8 +2,9 @@ export type Book = {
   isbn: string;
   title: string;
   author: string;
-  publicationDate: Date;
+  publisherDate: Date;
   description: string;
   coverImage: string;
   quantity: number;
+  publisher: string;
 }
