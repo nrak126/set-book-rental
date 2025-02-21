@@ -35,7 +35,7 @@ const Page: React.FC = () => {
             author: volumeInfo.authors
               ? volumeInfo.authors.join(", ") //著者が複数いる場合カンマ区切り
               : "著者情報がありません",
-            publisherDate: new Date(volumeInfo.publishedDate || ""), // 日付のフォーマットを合わせる
+            publishedDate: new Date(volumeInfo.publishedDate || ""), // 日付のフォーマットを合わせる
             description: volumeInfo.description || "説明がありません",
             coverImage: volumeInfo.imageLinks?.thumbnail || "", // 画像URL
             quantity: 1, // 数量のデフォルト値（必要なら変更）
@@ -47,7 +47,7 @@ const Page: React.FC = () => {
             isbn: "",
             title: "タイトルが見つかりません",
             author: "著者情報がありません",
-            publisherDate: new Date(),
+            publishedDate: new Date(),
             description: "説明がありません",
             coverImage: "",
             quantity: 0,
@@ -77,7 +77,7 @@ const Page: React.FC = () => {
             <>
               <p>名前: {bookInfo.title}</p>
               <p>著者: {bookInfo.author}</p>
-              <p>出版日: {bookInfo.publisherDate.toLocaleDateString()}</p>
+              <p>出版日: {bookInfo.publishedDate.toLocaleDateString()}</p>
               <p>isbn: {isbn}</p>
               <p>説明: {bookInfo.description}</p>
               <p>出版社: {bookInfo.publisher}</p>
