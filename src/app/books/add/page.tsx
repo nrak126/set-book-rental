@@ -14,7 +14,20 @@ const Page: React.FC = () => {
         const response = await axios.get(
           `https://www.googleapis.com/books/v1/volumes?q=${isbn}&startIndex=0&maxResults=1&key=${process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY}`
         );
-        if (response.data.items && response.data.items.length > 0) {
+
+        // ISBN-13 の一致確認
+        const isMatched = response.data.items.some((item: any) =>
+          item.volumeInfo?.industryIdentifiers?.some(
+            (identifier: any) =>
+              identifier.type === "ISBN_13" && identifier.identifier === isbn
+          )
+        );
+
+        if (
+          response.data.items &&
+          response.data.items.length > 0 &&
+          isMatched
+        ) {
           const volumeInfo = response.data.items[0].volumeInfo;
           const fetchedBook: Book = {
             isbn: isbn, // ISBN

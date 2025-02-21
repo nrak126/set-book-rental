@@ -50,15 +50,29 @@ export const Barcode: React.FC<BarcodeProps> = ({ setIsbn }) => {
 
   return (
     <div>
-      <div ref={scannerRef} style={{ width: "100%", height: "200px" }} />
+      <h2 style={{ textAlign: "center", color: "black", fontSize: "30px" }}>
+        書籍登録
+      </h2>
+      <div
+        ref={scannerRef}
+        style={{
+          position: "absolute",
+          left: "34%",
+          top: "10%",
+          width: "100%",
+          height: "200px",
+        }}
+      />
       <p
         style={{
           position: "absolute",
-          top: "58%",
+          top: "65%",
+          left: "43%",
           fontSize: "18px",
+          color: "black",
         }}
       >
-        スキャン中...
+        バーコードスキャーンしてください。
       </p>
     </div>
   );
