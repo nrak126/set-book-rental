@@ -12,7 +12,7 @@ interface IndustryIdentifier {
   identifier: string;
 }
 
-const Page: React.FC<Book> = () => {
+const Page = () => {
   const [isbn, setIsbn] = useState<string>(""); // ISBN
   const [bookInfo, setBookInfo] = useState<Book | null>(null); // Book 型で本のすべての情報を管理する状態
 
@@ -97,11 +97,11 @@ const Page: React.FC<Book> = () => {
               <BookEditor bookInfo={bookInfo} />
               {bookInfo.coverImage && bookInfo.coverImage !== "" && (
                 <Image
-                src={bookInfo.coverImage}
-                alt="Book Cover"
-                width={100}
-                height={100}
-              />
+                  src={bookInfo.coverImage}
+                  alt="Book Cover"
+                  width={100}
+                  height={100}
+                />
               )}
             </>
           ) : (
