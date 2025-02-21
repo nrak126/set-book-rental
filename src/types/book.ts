@@ -8,7 +8,3 @@ export type Book = {
   quantity: number;
   publisher: string;
 }
-
-export type BookEditorProps = {
-  bookInfo: Book;
-};

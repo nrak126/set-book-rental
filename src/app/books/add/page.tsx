@@ -3,9 +3,8 @@ import { Book } from "@/src/types/book"; // Book 型をインポート
 import React, { useEffect, useState } from "react";
 import { Barcode } from "@/src/components/books/ScanBarcode"; // Barcode コンポーネント
 import axios from "axios";
-import { BookEditor } from "@/src/components/books/BookEditor";
 
-const Page: React.FC<Book> = () => {
+const Page: React.FC = () => {
   const [isbn, setIsbn] = useState<string>(""); // ISBN
   const [bookInfo, setBookInfo] = useState<Book | null>(null); // Book 型で本のすべての情報を管理する状態
 
@@ -82,7 +81,6 @@ const Page: React.FC<Book> = () => {
               <p>isbn: {isbn}</p>
               <p>説明: {bookInfo.description}</p>
               <p>出版社: {bookInfo.publisher}</p>
-              <BookEditor bookInfo={bookInfo} />
               {bookInfo.coverImage && bookInfo.coverImage !== "" && (
                 <img
                   src={bookInfo.coverImage}
