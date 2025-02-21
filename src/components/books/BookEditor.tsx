@@ -19,7 +19,11 @@ export const BookEditor: React.FC<BookEditorProps> = (props) => {
 
   return (
     <>
-      <input value={book.title} onChange={handleTitleChange} />
+      <input
+        style={{ color: "black" }}
+        value={book.title}
+        onChange={handleTitleChange}
+      />
     </>
   );
 };
