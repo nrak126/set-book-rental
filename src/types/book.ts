@@ -12,3 +12,8 @@ export type Book = {
 export type BookEditorProps = {
   bookInfo: Book;
 };
+
+export type IndustryIdentifier = {
+  type: string;
+  identifier: string;
+};

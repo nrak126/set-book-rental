@@ -4,13 +4,9 @@ import React, { useEffect, useState } from "react";
 import { Barcode } from "@/src/components/books/ScanBarcode"; // Barcode コンポーネント
 import axios from "axios";
 import { BookEditor } from "@/src/components/books/BookEditor"; // パスは実際の場所に合わせて変更
+import { IndustryIdentifier } from "@/src/types/book"; // IndustryIdentifier 型をインポート
 
 import Image from "next/image";
-
-type IndustryIdentifier = {
-  type: string;
-  identifier: string;
-};
 
 const Page = () => {
   const [isbn, setIsbn] = useState<string>(""); // ISBN
@@ -27,7 +23,7 @@ const Page = () => {
         const isMatched = response.data.items.some(
           (item: {
             volumeInfo: {
-              industryIdentifiers: { type: string; identifier: string }[];
+              industryIdentifiers: IndustryIdentifier[];
             };
           }) =>
             item.volumeInfo?.industryIdentifiers?.some(
