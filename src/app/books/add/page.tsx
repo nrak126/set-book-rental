@@ -7,10 +7,10 @@ import { BookEditor } from "@/src/components/books/BookEditor"; // パスは実�
 
 import Image from "next/image";
 
-interface IndustryIdentifier {
+type IndustryIdentifier = {
   type: string;
   identifier: string;
-}
+};
 
 const Page = () => {
   const [isbn, setIsbn] = useState<string>(""); // ISBN
